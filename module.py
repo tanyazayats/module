@@ -1,5 +1,6 @@
 import pandas as pd
-import matlib
+import matplotlib.pyplot as plt
+import numpy as np
 
 file_df=pd.read_csv("uni/file.csv")
 
@@ -26,14 +27,17 @@ def order_status(status):
         print(file_df["Статус"=="В процесі"])
 
 plt.figure(figsize=(10, 6))
-summary["criteria"].plot(kind="bar", color="skyblue", edgecolor="black")
-
+summary["fuel_quantity"].plot(
+    kind="bar",
+    color="skyblue",
+    edgecolor="black",
+    legend=False
+)
 plt.title("Total Quantity of Fuel Purchased by Each Client")
 plt.xlabel("Client (Surname)")
 plt.ylabel("Total Quantity of Fuel Purchased (L)")
-plt.xticks(rotation=45)
+plt.xticks(rotation=45, ha="right")
 plt.tight_layout()
-
 plt.savefig("client_fuel_histogram.png")
 plt.show()
 print("Menu:\n1. Add order\n2. Delete order\n3. Analyze status\n4. Count orders\n5. Print sum of orders\n6. Print data\n7. Exit")
